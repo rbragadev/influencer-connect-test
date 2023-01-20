@@ -102,7 +102,7 @@ export class HeaderComponent {
               {
                 label: 'Todas as Partners',
                 icon: 'pi pi-fw pi-filter',
-                routerLink: 'partners',
+                routerLink: ['all-partner'],
               },
               {
                 label: 'Pesquisa por Id',

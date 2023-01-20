@@ -1,1 +1,8 @@
-<p>all-partner works!</p>
+<div>
+  <ul>
+    <li *ngFor="let partner of partners">
+      Partner id: {{ partner.partner_id }} - {{ partner.partner_first_name }}
+      {{ partner.partner_last_name }}
+    </li>
+  </ul>
+</div>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Partners } from 'src/app/Partners.Interface';
-import { NewPartnersService } from 'src/app/services/partners.service';
+import { PartnersService } from 'src/app/services/partners.service';
 
 @Component({
   selector: 'app-new-partner',
@@ -10,7 +10,7 @@ import { NewPartnersService } from 'src/app/services/partners.service';
 export class NewPartnerComponent {
   btnText = 'Enviar Cadastro';
 
-  constructor(private newPartnerService: NewPartnersService) {}
+  constructor(private PartnerService: PartnersService) {}
 
   async createHandlrer(partners: Partners) {
     const formData = new FormData();
@@ -24,7 +24,7 @@ export class NewPartnerComponent {
 
     //Todo
 
-    await this.newPartnerService.createPartner(formData).subscribe();
+    await this.PartnerService.createPartner(formData).subscribe();
 
     //Exibir mensagem
 

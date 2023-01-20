@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { NewPartnersService } from 'src/app/services/partners.service';
+import { PartnersService } from 'src/app/services/partners.service';
 import { Partners } from 'src/app/Partners.Interface';
 import { environment } from 'src/app/environments/environment';
 
@@ -10,27 +10,35 @@ import { environment } from 'src/app/environments/environment';
   styleUrls: ['./all-partner.component.css'],
 })
 export class AllPartnerComponent implements OnInit {
-  allPartners: Partners[] = [];
-  partners: Partners[] = [];
+  partners: any = [];
   baseApiUrl = environment.baseApiUrl;
 
   //todo search
 
-  constructor(private newPartnerService: NewPartnersService) {}
+  constructor(public partnersService: PartnersService) {}
 
   ngOnInit(): void {
-    this.newPartnerService.getPartners().subscribe((items) => {
+    this.getAllPartners();
+  }
+
+  getAllPartners() {
+    this.partnersService.getAllPartners().subscribe((data) => {
+      this.partners = data;
+      console.log(this.partners);
+    });
+
+    /* this.newPartnerService.getPartners().subscribe((items) => {
       const data = items.data;
 
-      /*data.map((item) => {
+      data.map((item) => {
         item.creation_date = new Date(item.creation_date).toLocaleDateString(
           'pt-BR'
         );
-      });*/
+      });
 
       this.allPartners = data;
       this.partners = data;
       console.log(data);
-    });
+    });*/
   }
 }
