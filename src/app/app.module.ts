@@ -13,6 +13,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { NewPartnerFormComponent } from './components/forms/new-partner-form/new-partner-form.component';
 import { NewPartnerComponent } from './components/pages/partners/new-partner/new-partner.component';
+import { AllPartnerComponent } from './components/pages/partners/all-partner/all-partner.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { NewPartnerComponent } from './components/pages/partners/new-partner/new
     HomeComponent,
     NewPartnerFormComponent,
     NewPartnerComponent,
+    AllPartnerComponent,
   ],
   imports: [
     BrowserModule,

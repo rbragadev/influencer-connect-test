@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Partners } from '../Partners.Interface';
+import { Response } from '../Response.Interface';
 
 import { environment } from '../environments/environment';
 
@@ -14,6 +15,10 @@ export class NewPartnersService {
   private apiUrl = `${this.baseApiUrl}/influencer-connect/partner`;
 
   constructor(private httpClient: HttpClient) {}
+
+  public getPartners(): Observable<Response<Partners[]>> {
+    return this.httpClient.get<Response<Partners[]>>(this.apiUrl);
+  }
 
   createPartner(formData: FormData): Observable<FormData> {
     return this.httpClient.post<FormData>(this.apiUrl, formData);
