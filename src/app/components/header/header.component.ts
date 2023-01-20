@@ -85,6 +85,7 @@ export class HeaderComponent {
           {
             label: 'Nova Partner',
             icon: 'pi pi-fw pi-user-plus',
+            routerLink: ['new-partner'],
           },
           {
             label: 'Editar Partner',

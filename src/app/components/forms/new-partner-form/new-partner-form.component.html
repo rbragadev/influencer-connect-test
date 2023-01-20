@@ -1,0 +1,24 @@
+<form (ngSubmit)="submit()" [formGroup]="createPartnerForm" #formDir="ngForm">
+  <div>
+    <label for="partner_first_name">Nome da Partner</label>
+    <input type="text" formControlName="partner_first_name" required />
+  </div>
+  <div *ngIf="partner_first_name.invalid && formDir.submitted">
+    <p>O Nome é obrigatorio</p>
+  </div>
+  <div>
+    <label for="partner_last_name">Segundo nome da Partner</label>
+    <input
+      type="text"
+      formControlName="partner_last_name"
+      placeholder="Sobrenome"
+      required
+    />
+  </div>
+  <div>
+    <label for="partner_avatar">Envie sua foto</label>
+    <input type="file" (change)="onAvatarSelected($event)" />
+  </div>
+
+  <input type="submit" value="{{ btnText }}" />
+</form>
