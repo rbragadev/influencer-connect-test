@@ -1,4 +1,15 @@
 <div>
+  <br />
+  <div>
+    <form action="">
+      <i class="pi pi-search"></i>
+      <input
+        type="text"
+        placeholder="Busca: Primeiro Nome"
+        (input)="search($event)"
+      />
+    </form>
+  </div>
   <ul>
     <li *ngFor="let partner of partners">
       Partner id: {{ partner.partner_id }} - {{ partner.partner_first_name }}
@@ -6,3 +17,39 @@
     </li>
   </ul>
 </div>
+<div *ngFor="let partner of partners">
+  >
+  <p-card
+    header="{{ partner.partner_first_name }} {{ partner.partner_last_name }}"
+    [style]="{ width: '25rem', 'margin-bottom': '2em' }"
+  >
+    <ng-template pTemplate="header"> </ng-template>
+    <p>
+      <a routerLink="/"> PartnerId: {{ partner.partner_id }}</a> <br />
+      <span>
+        Nome:
+        {{ partner.partner_first_name }} {{ partner.partner_last_name }}
+      </span>
+    </p>
+  </p-card>
+</div>
+<p-table [value]="partners" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Sobrenome</th>
+      <th>Instagram</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-partner>
+    <tr>
+      <td>
+        <a href=""> {{ partner.partner_id }}</a>
+      </td>
+      <td>{{ partner.partner_first_name }}</td>
+      <td>{{ partner.partner_last_name }}</td>
+      <td>{{ partner.partner_email }}</td>
+    </tr>
+  </ng-template>
+</p-table>

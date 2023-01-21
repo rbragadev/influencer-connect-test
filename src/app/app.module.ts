@@ -14,6 +14,7 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { NewPartnerFormComponent } from './components/forms/new-partner-form/new-partner-form.component';
 import { NewPartnerComponent } from './components/pages/partners/new-partner/new-partner.component';
 import { AllPartnerComponent } from './components/pages/partners/all-partner/all-partner.component';
+import { PartnerComponent } from './components/pages/partners/partner/partner.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { AllPartnerComponent } from './components/pages/partners/all-partner/all
     NewPartnerFormComponent,
     NewPartnerComponent,
     AllPartnerComponent,
+    PartnerComponent,
   ],
   imports: [
     BrowserModule,
