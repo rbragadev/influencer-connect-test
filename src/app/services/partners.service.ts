@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 import { Partners } from '../Partners.Interface';
 import { ResponsePartner } from '../Partners.Interface';
@@ -25,10 +25,16 @@ export class PartnersService {
     this.partners = this.partners;
   }
 
-  public getAllPartners(): Observable<ResponsePartner[]> {
+  public getPartners(): Observable<ResponsePartner[]> {
     return this.httpClient.get<ResponsePartner[]>(
       `${this.apiUrl}/influencer-connect/partner`
     );
+  }
+
+  public getPartner(id: number): Observable<ResponsePartner> {
+    return this.httpClient
+      .get<ResponsePartner>(`${this.apiUrl}/influencer-connect/partner/${id}`)
+      .pipe(tap((data) => console.log(data)));
   }
 
   createPartner(formData: FormData): Observable<FormData> {

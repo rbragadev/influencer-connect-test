@@ -23,7 +23,7 @@ export class AllPartnerComponent implements OnInit {
   }
 
   getAllPartners() {
-    this.partnersService.getAllPartners().subscribe((data) => {
+    this.partnersService.getPartners().subscribe((data) => {
       this.partners = data;
       this.allPartners = data;
       console.log(this.partners);
