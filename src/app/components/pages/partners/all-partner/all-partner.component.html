@@ -17,22 +17,7 @@
     </li>
   </ul>
 </div>
-<div *ngFor="let partner of partners">
-  >
-  <p-card
-    header="{{ partner.partner_first_name }} {{ partner.partner_last_name }}"
-    [style]="{ width: '25rem', 'margin-bottom': '2em' }"
-  >
-    <ng-template pTemplate="header"> </ng-template>
-    <p>
-      <a routerLink="/"> PartnerId: {{ partner.partner_id }}</a> <br />
-      <span>
-        Nome:
-        {{ partner.partner_first_name }} {{ partner.partner_last_name }}
-      </span>
-    </p>
-  </p-card>
-</div>
+
 <p-table [value]="partners" [tableStyle]="{ 'min-width': '50rem' }">
   <ng-template pTemplate="header">
     <tr>

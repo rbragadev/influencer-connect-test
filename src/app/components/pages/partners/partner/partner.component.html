@@ -7,8 +7,14 @@
 <div>
   <h3>Ações</h3>
   <div>
-    <i class="pi pi-user-edit"> Editar</i><br />
-    <i class="pi pi-user-minus"> Excluir</i>
+    <button>
+      <a routerLink="/partner/edit/{{ partners.partner_id }}">
+        <i class="pi pi-user-edit"> Editar</i></a
+      ></button
+    ><br />
+    <button (click)="removeHandler(partners.partner_id)">
+      <i class="pi pi-user-minus"> Excluir</i>
+    </button>
   </div>
 </div>
 <p></p>

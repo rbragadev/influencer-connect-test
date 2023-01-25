@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DebugComponent } from './debug/debug.component';
 
-import { PrimeNgModule } from './prime-ng/prime-ng.module';
+import { PrimeNgModule } from './prime-ng.module';
 
 @NgModule({
-  declarations: [],
+  declarations: [DebugComponent],
   imports: [CommonModule, PrimeNgModule],
-  exports: [PrimeNgModule],
+  exports: [PrimeNgModule, DebugComponent],
 })
 export class SharedModule {}

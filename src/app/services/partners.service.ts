@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { from, Observable, tap } from 'rxjs';
 
 import { Partners } from '../Partners.Interface';
 import { ResponsePartner } from '../Partners.Interface';
@@ -43,44 +43,22 @@ export class PartnersService {
       formData
     );
   }
-}
-/*getAllPartners() {
-    this.httpClient
-      .get<ResponsePartner[]>(`${this.apiUrl}/influencer-connect/partner`)
-      .subscribe((res) => {
-        let partners = res;
-        for (let partner of partners) {
-          console.log(partner.partner_first_name);
-        }
-        console.log(res[0].partner_first_name);
-        console.log(partners);
-      });
-  }
-}
 
-/*public getPartners(): Observable<ResponsePartner[]> {
-    return this.httpClient.get<ResponsePartner[]>(
-      host + 'influencer-connect/partner'
+  //TODO******************************************
+  //Make soft delete method
+  removePartner(id: number) {
+    return from(
+      this.httpClient.delete(`${this.apiUrl}/influencer-connect/partner/${id}`)
     );
   }
+  //*************************************************
 
-  public getPartners() {
-    return this.httpClient
-      .get(`${host} + /influencer-connect/partner`)
-      .subscribe((res) => console.log(res));
-  }*/
-
-/*export class NewPartnersService {
-  private baseApiUrl = environment.baseApiUrl;
-  private apiUrl = `${this.baseApiUrl}/influencer-connect/partner`;
-
-  constructor(private httpClient: HttpClient) {}
-
-  public getPartners(): Observable<Response<Partners[]>> {
-    return this.httpClient.get<Response<Partners[]>>(this.apiUrl);
+  //TODO******************************************
+  //make Edit method
+  updatePartner(id: number, formData: FormData): Observable<FormData> {
+    return this.httpClient.patch<FormData>(
+      `${this.apiUrl}/influencer-connect/partner/${id}`,
+      formData
+    );
   }
-
-  createPartner(formData: FormData): Observable<FormData> {
-    return this.httpClient.post<FormData>(this.apiUrl, formData);
-  }
-}*/
+}

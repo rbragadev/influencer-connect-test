@@ -1,6 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder,
+} from '@angular/forms';
 import { Partners } from 'src/app/Partners.Interface';
+import { PartnersService } from 'src/app/services/partners.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-new-partner-form',
@@ -9,57 +17,59 @@ import { Partners } from 'src/app/Partners.Interface';
 })
 export class NewPartnerFormComponent implements OnInit {
   createPartnerForm!: FormGroup<any>;
-  partner_avatar?: File;
+  formulario!: FormGroup;
 
-  @Output() onSubmit = new EventEmitter<Partners>();
-  @Input() btnText!: string;
+  //@Output() onSubmit = new EventEmitter<Partners>();
+  //@Input() btnText!: string;
+  @Input() partnerData: Partners | null = null;
+
+  constructor(
+    private partnersService: PartnersService,
+    private formBuilder: FormBuilder,
+    private httpClient: HttpClient
+  ) {}
 
   ngOnInit(): void {
-    this.createPartnerForm = new FormGroup({
-      partner_id: new FormControl(''),
-      partner_level_id: new FormControl(''),
-      creation_date: new FormControl(''),
-      partner_first_name: new FormControl('', [Validators.required]),
-      partner_last_name: new FormControl(''),
-      partner_cpf_number: new FormControl(''),
-      partner_email: new FormControl(''),
-      partner_phone: new FormControl(''),
-      partner_password: new FormControl(''),
-      partner_status: new FormControl(''),
-      partner_adress_street_name: new FormControl(''),
-      partner_adress_street_number: new FormControl(''),
-      partner_adress_street_complement: new FormControl(''),
-      partner_adress_neighborhood: new FormControl(''),
-      partner_adress_city: new FormControl(''),
-      partner_adress_state: new FormControl(''),
-      partner_adress_country: new FormControl(''),
-      partner_adress_postal_code: new FormControl(''),
-      partner_avatar: new FormControl(''),
+    this.formulario = this.formBuilder.group({
+      partner_first_name: [null, Validators.required],
+      partner_last_name: [null],
+      partner_email: [null],
+      partner_cpf_number: [null],
+      partner_phone: [null],
+      partner_password: [null],
+      partner_status: [null],
+      partner_address_street_name: [null],
+      partner_address_street_number: [null],
+      partner_address_street_complement: [null],
+      partner_address_city: [null],
+      partner_address_state: [null],
+      partner_address_country: [null],
+      partner_address_postal_code: [null],
+      partner_avatar: [null],
+      partner_level_id: [null],
+      partner_address_neighborhood: [null],
+      creation_date: [null],
     });
   }
 
-  get partner_first_name() {
-    return this.createPartnerForm.get('partner_first_name')!;
+  onSubmit() {
+    console.log(this.formulario.value);
+    this.httpClient
+      .post(
+        'http://localhost:3000/influencer-connect/partner',
+        JSON.stringify(this.formulario.value)
+      )
+      .pipe(map((data) => data))
+      .subscribe(
+        (data) => {
+          console.log(data);
+          this.formulario.reset();
+        },
+        (error: any) => alert('erro')
+      );
   }
 
-  get partner_last_name() {
-    return this.createPartnerForm.get('partner_last_name')!;
-  }
-
-  onAvatarSelected(event: any) {
-    const partner_avatar: File = event.target.files[0];
-
-    this.createPartnerForm.patchValue({
-      partner_avatar: event.target.files[0],
-    });
-  }
-
-  submit() {
-    if (this.createPartnerForm.invalid) {
-      return;
-    }
-    console.log(this.createPartnerForm.value);
-
-    this.onSubmit.emit(this.createPartnerForm.value);
+  resetar() {
+    this.formulario.reset();
   }
 }

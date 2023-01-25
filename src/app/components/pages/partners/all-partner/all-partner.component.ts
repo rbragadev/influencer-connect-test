@@ -28,20 +28,6 @@ export class AllPartnerComponent implements OnInit {
       this.allPartners = data;
       console.log(this.partners);
     });
-
-    /* this.newPartnerService.getPartners().subscribe((items) => {
-      const data = items.data;
-
-      data.map((item) => {
-        item.creation_date = new Date(item.creation_date).toLocaleDateString(
-          'pt-BR'
-        );
-      });
-
-      this.allPartners = data;
-      this.partners = data;
-      console.log(data);
-    });*/
   }
 
   //Todo Search

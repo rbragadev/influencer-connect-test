@@ -1,24 +1,240 @@
-<form (ngSubmit)="submit()" [formGroup]="createPartnerForm" #formDir="ngForm">
-  <div>
-    <label for="partner_first_name">Nome da Partner</label>
-    <input type="text" formControlName="partner_first_name" required />
-  </div>
-  <div *ngIf="partner_first_name.invalid && formDir.submitted">
-    <p>O Nome é obrigatorio</p>
-  </div>
-  <div>
-    <label for="partner_last_name">Segundo nome da Partner</label>
-    <input
-      type="text"
-      formControlName="partner_last_name"
-      placeholder="Sobrenome"
-      required
-    />
-  </div>
-  <div>
-    <label for="partner_avatar">Envie sua foto</label>
-    <input type="file" (change)="onAvatarSelected($event)" />
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  <div class="grid p-fluid">
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"> </i></span>
+        <label for="partner_first_name"></label>
+        <input
+          type="text"
+          pInputText
+          placeholder="Primeiro Nome"
+          formControlName="partner_first_name"
+        />
+      </div>
+    </div>
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <label for="partner_last_name"></label>
+        <input
+          type="text"
+          pInputText
+          formControlName="partner_last_name"
+          placeholder="Ultimo Nome"
+        />
+      </div>
+    </div>
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">$</span>
+        <label for="partner_cpf_number"></label>
+        <input
+          type="number"
+          pInputText
+          formControlName="partner_cpf_number"
+          placeholder="CPF"
+        />
+      </div>
+    </div>
   </div>
 
-  <input type="submit" value="{{ btnText }}" />
+  <div class="grid p-fluid">
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"> </i></span>
+        <label for="partner_email"></label>
+        <input
+          type="text"
+          pInputText
+          placeholder="Email"
+          formControlName="partner_email"
+        />
+      </div>
+    </div>
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <label for="partner_phone"></label>
+        <input
+          type="number"
+          pInputText
+          formControlName="partner_phone"
+          placeholder="Telefone"
+        />
+      </div>
+    </div>
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">$</span>
+        <label for="partner_password"></label>
+        <input
+          type="text"
+          pInputText
+          formControlName="partner_password"
+          placeholder="Senha"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="grid p-fluid">
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"> </i></span>
+        <label for="partner_status"></label>
+        <input
+          type="text"
+          pInputText
+          placeholder="Status"
+          formControlName="partner_status"
+        />
+      </div>
+    </div>
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <label for="partner_address_street_name"></label>
+        <input
+          type="text"
+          pInputText
+          formControlName="partner_address_street_name"
+          placeholder="Nome da Rua"
+        />
+      </div>
+    </div>
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">$</span>
+        <label for="partner_address_street_number"></label>
+        <input
+          type="number"
+          pInputText
+          formControlName="partner_address_street_number"
+          placeholder="Numero da casa"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="grid p-fluid">
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"> </i></span>
+        <label for="partner_address_street_complement"></label>
+        <input
+          type="text"
+          pInputText
+          placeholder="Complemento"
+          formControlName="partner_address_street_complement"
+        />
+      </div>
+    </div>
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <label for="partner_address_city"></label>
+        <input
+          type="text"
+          pInputText
+          formControlName="partner_address_city"
+          placeholder="Cidade"
+        />
+      </div>
+    </div>
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">$</span>
+        <label for="partner_address_state"></label>
+        <input
+          type="text"
+          pInputText
+          formControlName="partner_address_state"
+          placeholder="Estado"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="grid p-fluid">
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"> </i></span>
+        <label for="partner_address_country"></label>
+        <input
+          type="text"
+          pInputText
+          placeholder="País"
+          formControlName="partner_address_country"
+        />
+      </div>
+    </div>
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <label for="partner_address_postal_code"></label>
+        <input
+          type="number"
+          pInputText
+          formControlName="partner_address_postal_code"
+          placeholder="Codigo postal"
+        />
+      </div>
+    </div>
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">$</span>
+        <label for="partner_avatar"></label>
+        <input
+          type="text"
+          pInputText
+          formControlName="partner_avatar"
+          placeholder="Url imagem"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="grid p-fluid">
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"> </i></span>
+        <label for="partner_level_id"></label>
+        <input
+          type="number"
+          pInputText
+          placeholder="Id do level de partner"
+          formControlName="partner_level_id"
+        />
+      </div>
+    </div>
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <label for="partner_address_neighborhood"></label>
+        <input
+          type="text"
+          pInputText
+          formControlName="partner_address_neighborhood"
+          placeholder="Vizinhança?"
+        />
+      </div>
+    </div>
+    <div class="col-12 md:col-4">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">$</span>
+        <label for="creation_date"></label>
+        <input
+          type="text"
+          pInputText
+          formControlName="creation_date"
+          placeholder="Data de Criação"
+        />
+      </div>
+    </div>
+  </div>
+
+  <input pInputText type="submit" value="Enviar" />
+  <input pInputText type="submit" value="Resetar" (click)="resetar()" />
+
+  <app-debug [form]="formulario"></app-debug>
 </form>

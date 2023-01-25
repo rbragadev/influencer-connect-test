@@ -11,23 +11,4 @@ export class NewPartnerComponent {
   btnText = 'Enviar Cadastro';
 
   constructor(private PartnerService: PartnersService) {}
-
-  async createHandlrer(partners: Partners) {
-    const formData = new FormData();
-
-    formData.append('partner_first_name', partners.partner_first_name);
-    formData.append('partner_last_name', partners.partner_last_name);
-
-    if (partners.partner_avatar) {
-      formData.append('partner_avatar', partners.partner_avatar);
-    }
-
-    //Todo
-
-    await this.PartnerService.createPartner(formData).subscribe();
-
-    //Exibir mensagem
-
-    //Redirect
-  }
 }

@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { PartnersService } from 'src/app/services/partners.service';
 import { Partners, ResponsePartner } from 'src/app/Partners.Interface';
 import { environment } from 'src/app/environments/environment';
-import { first } from 'rxjs';
+import { first, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-partner',
@@ -16,7 +16,8 @@ export class PartnerComponent implements OnInit {
 
   constructor(
     private partnersService: PartnersService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -30,4 +31,17 @@ export class PartnerComponent implements OnInit {
         console.log(id);
       });
   }
+
+  //TODO*****************************************
+  //Make soft delete method
+  removeHandler(id: number) {
+    this.partnersService
+      .removePartner(id)
+      .pipe(
+        tap(() => console.log('testando')),
+        switchMap(() => this.router.navigate(['/']))
+      )
+      .subscribe();
+  }
+  //TODO***************************************
 }
