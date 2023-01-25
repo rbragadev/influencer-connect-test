@@ -12,7 +12,7 @@ import { first, switchMap, tap } from 'rxjs';
 })
 export class PartnerComponent implements OnInit {
   partners: any = [];
-  baseApiUrl = environment.baseApiUrl;
+  baseApiUrl = environment.API;
 
   constructor(
     private partnersService: PartnersService,

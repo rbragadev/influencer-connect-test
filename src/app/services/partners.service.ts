@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { from, Observable, tap } from 'rxjs';
+import { from, Observable, take, tap } from 'rxjs';
 
 import { Partners } from '../Partners.Interface';
 import { ResponsePartner } from '../Partners.Interface';
@@ -11,13 +11,13 @@ import { environment } from '../environments/environment';
   providedIn: 'root',
 })
 export class PartnersService {
-  apiUrl: string = 'http://localhost:3000';
+  private readonly API = `${environment.API}`;
 
-  httpOptions = {
+  /*httpOptions = {
     header: new HttpHeaders({
       'Content-Type': 'application/json',
     }),
-  };
+  };*/
 
   partners: ResponsePartner[] = [];
 
@@ -26,30 +26,23 @@ export class PartnersService {
   }
 
   public getPartners(): Observable<ResponsePartner[]> {
-    return this.httpClient.get<ResponsePartner[]>(
-      `${this.apiUrl}/influencer-connect/partner`
-    );
+    return this.httpClient.get<ResponsePartner[]>(`${this.API}partner`);
   }
 
   public getPartner(id: number): Observable<ResponsePartner> {
     return this.httpClient
-      .get<ResponsePartner>(`${this.apiUrl}/influencer-connect/partner/${id}`)
+      .get<ResponsePartner>(`${this.API}partner/${id}`)
       .pipe(tap((data) => console.log(data)));
   }
 
-  createPartner(formData: FormData): Observable<FormData> {
-    return this.httpClient.post<FormData>(
-      `${this.apiUrl}/influencer-connect/partner`,
-      formData
-    );
+  createPartner(partners: any) {
+    return this.httpClient.post(`${this.API}partner`, partners).pipe(take(1));
   }
 
   //TODO******************************************
   //Make soft delete method
   removePartner(id: number) {
-    return from(
-      this.httpClient.delete(`${this.apiUrl}/influencer-connect/partner/${id}`)
-    );
+    return from(this.httpClient.delete(`${this.API}partner/${id}`));
   }
   //*************************************************
 
@@ -57,7 +50,7 @@ export class PartnersService {
   //make Edit method
   updatePartner(id: number, formData: FormData): Observable<FormData> {
     return this.httpClient.patch<FormData>(
-      `${this.apiUrl}/influencer-connect/partner/${id}`,
+      `${this.API}partner/${id}`,
       formData
     );
   }

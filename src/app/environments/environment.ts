@@ -1,5 +1,5 @@
 export const environment = {
-  baseApiUrl: 'http://localhost:3000',
+  API: 'http://localhost:3000/influencer-connect/',
 };
 
 //const host: string = 'https://gateway-api-stage.b4a.com.br/';

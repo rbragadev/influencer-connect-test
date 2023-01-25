@@ -9,11 +9,10 @@ import { environment } from 'src/app/environments/environment';
   styleUrls: ['./all-partner.component.css'],
 })
 export class AllPartnerComponent implements OnInit {
-  baseApiUrl = environment.baseApiUrl;
+  baseApiUrl = environment.API;
 
   allPartners: any = []; //Datas used in Method for filter
   partners: any = []; //Main Array of component
-
   searchTerm: string = '';
 
   constructor(public partnersService: PartnersService) {}

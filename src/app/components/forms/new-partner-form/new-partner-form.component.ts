@@ -21,7 +21,7 @@ export class NewPartnerFormComponent implements OnInit {
 
   //@Output() onSubmit = new EventEmitter<Partners>();
   //@Input() btnText!: string;
-  @Input() partnerData: Partners | null = null;
+  //@Input() partnerData: Partners | null = null;
 
   constructor(
     private partnersService: PartnersService,
@@ -31,6 +31,7 @@ export class NewPartnerFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
+      //partner_id: [null],
       partner_first_name: [null, Validators.required],
       partner_last_name: [null],
       partner_email: [null],
@@ -38,35 +39,26 @@ export class NewPartnerFormComponent implements OnInit {
       partner_phone: [null],
       partner_password: [null],
       partner_status: [null],
-      partner_address_street_name: [null],
-      partner_address_street_number: [null],
-      partner_address_street_complement: [null],
-      partner_address_city: [null],
-      partner_address_state: [null],
-      partner_address_country: [null],
-      partner_address_postal_code: [null],
+      partner_adress_street_name: [null],
+      partner_adress_street_number: [null],
+      partner_adress_street_complement: [null],
+      partner_adress_city: [null],
+      partner_adress_state: [null],
+      partner_adress_country: [null],
+      partner_adress_postal_code: [null],
       partner_avatar: [null],
       partner_level_id: [null],
-      partner_address_neighborhood: [null],
+      partner_adress_neighborhood: [null],
       creation_date: [null],
     });
   }
 
   onSubmit() {
     console.log(this.formulario.value);
-    this.httpClient
-      .post(
-        'http://localhost:3000/influencer-connect/partner',
-        JSON.stringify(this.formulario.value)
-      )
-      .pipe(map((data) => data))
-      .subscribe(
-        (data) => {
-          console.log(data);
-          this.formulario.reset();
-        },
-        (error: any) => alert('erro')
-      );
+
+    this.partnersService
+      .createPartner(this.formulario.value)
+      .subscribe((data) => console.log(data));
   }
 
   resetar() {
