@@ -16,7 +16,7 @@ const routes: Routes = [
     component: NewPartnerComponent,
   },
   {
-    path: 'all-partner',
+    path: 'partner',
     component: AllPartnerComponent,
   },
   {

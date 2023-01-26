@@ -30,7 +30,7 @@
   <ng-template pTemplate="body" let-partner>
     <tr>
       <td>
-        <a href=""> {{ partner.partner_id }}</a>
+        <a routerLink="{{ partner.partner_id }}"> {{ partner.partner_id }}</a>
       </td>
       <td>{{ partner.partner_first_name }}</td>
       <td>{{ partner.partner_last_name }}</td>
