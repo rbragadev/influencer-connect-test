@@ -23,15 +23,6 @@ export class PartnerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.items = [
-      { label: 'Resumo', icon: 'pi pi-home' },
-      { label: 'Perfil de Beleza', icon: 'pi pi-users' },
-      { label: 'Areas', icon: 'pi pi-search' },
-      { label: 'Dados Cadastrais', icon: 'pi pi-user' },
-      { label: 'Logs', icon: 'pi pi-exclamation-circle' },
-      { label: 'Configurações', icon: 'pi pi-cog' },
-    ];
-
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.partnersService
       .getPartner(id)
@@ -41,6 +32,22 @@ export class PartnerComponent implements OnInit {
         console.log(this.partners);
         console.log(id);
       });
+
+    this.items = [
+      {
+        label: 'Resumo',
+        icon: 'pi pi-home',
+      },
+      { label: 'Perfil de Beleza', icon: 'pi pi-users' },
+      { label: 'Areas', icon: 'pi pi-search' },
+      { label: 'Dados Cadastrais', icon: 'pi pi-user' },
+      { label: 'Logs', icon: 'pi pi-exclamation-circle' },
+      {
+        label: 'Configurações',
+        icon: 'pi pi-cog',
+        routerLink: [`/partner/edit/${id}`],
+      },
+    ];
   }
 
   //TODO*****************************************
