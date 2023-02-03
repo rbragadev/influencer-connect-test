@@ -5,6 +5,11 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
+import { RippleModule } from 'primeng/ripple';
+import { BadgeModule } from 'primeng/badge';
+import { StyleClassModule } from 'primeng/styleclass';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { TagModule } from 'primeng/tag';
 
 @NgModule({
   declarations: [],
@@ -15,6 +20,11 @@ import { TableModule } from 'primeng/table';
     CardModule,
     InputTextModule,
     TableModule,
+    RippleModule,
+    BadgeModule,
+    StyleClassModule,
+    TabMenuModule,
+    TagModule,
   ],
 })
 export class PrimeNgModule {}

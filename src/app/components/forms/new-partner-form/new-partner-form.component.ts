@@ -49,7 +49,7 @@ export class NewPartnerFormComponent implements OnInit {
       partner_avatar: [null],
       partner_level_id: [null],
       partner_adress_neighborhood: [null],
-      creation_date: [null],
+      creation_date: [new Date()],
     });
   }
 

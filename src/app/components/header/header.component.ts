@@ -10,7 +10,7 @@ export class HeaderComponent {
   items: MenuItem[] = [];
 
   ngOnInit() {
-    this.items = [
+    /*this.items = [
       {
         label: 'Admin',
         icon: 'pi pi-fw pi-lock',
@@ -102,7 +102,7 @@ export class HeaderComponent {
               {
                 label: 'Todas as Partners',
                 icon: 'pi pi-fw pi-filter',
-                routerLink: ['all-partner'],
+                routerLink: ['partner'],
               },
               {
                 label: 'Pesquisa por Id',
@@ -185,6 +185,6 @@ export class HeaderComponent {
         label: 'Logout',
         icon: 'pi pi-fw pi-power-off',
       },
-    ];
+    ];*/
   }
 }
