@@ -10,6 +10,7 @@ import { BadgeModule } from 'primeng/badge';
 import { StyleClassModule } from 'primeng/styleclass';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { TagModule } from 'primeng/tag';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   declarations: [],
@@ -25,6 +26,7 @@ import { TagModule } from 'primeng/tag';
     StyleClassModule,
     TabMenuModule,
     TagModule,
+    ChartModule,
   ],
 })
 export class PrimeNgModule {}
