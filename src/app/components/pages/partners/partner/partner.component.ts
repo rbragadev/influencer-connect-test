@@ -28,6 +28,7 @@ export class PartnerComponent implements OnInit {
       { label: 'Perfil de Beleza', icon: 'pi pi-users' },
       { label: 'Areas', icon: 'pi pi-search' },
       { label: 'Dados Cadastrais', icon: 'pi pi-user' },
+      { label: 'Logs', icon: 'pi pi-exclamation-circle' },
       { label: 'Configurações', icon: 'pi pi-cog' },
     ];
 
