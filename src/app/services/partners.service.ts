@@ -25,8 +25,8 @@ export class PartnersService {
     this.partners = this.partners;
   }
 
-  public getPartners(): Observable<ResponsePartner[]> {
-    return this.httpClient.get<ResponsePartner[]>(`${this.API}partner`);
+  public getPartners(): Observable<ResponsePartner> {
+    return this.httpClient.get<ResponsePartner>(`${this.API}partner`);
   }
 
   public getPartner(id: number): Observable<ResponsePartner> {

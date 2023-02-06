@@ -1,4 +1,5 @@
 export interface Partners {
+  data?: any[];
   partner_id?: number;
   partner_level_id: number | string;
   creation_date: string | Date;
@@ -20,6 +21,7 @@ export interface Partners {
   partner_avatar?: string;
 }
 export class ResponsePartner {
+  data?: any[];
   partner_id?: number;
   partner_level_id?: number;
   creation_date?: string | Date;

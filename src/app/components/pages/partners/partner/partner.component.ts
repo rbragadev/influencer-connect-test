@@ -28,7 +28,7 @@ export class PartnerComponent implements OnInit {
       .getPartner(id)
       .pipe(first())
       .subscribe((data) => {
-        this.partners = data;
+        this.partners = data.data;
         console.log(this.partners);
         console.log(id);
       });
